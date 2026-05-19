@@ -35,6 +35,14 @@ This directory has the following structure:
 
 ## Downloading necessary packages that cannot be installed with snakemake
 
+### SURVIVOR
+```
+git clone https://github.com/fritzsedlazeck/SURVIVOR.git
+cd SURVIVOR/Debug
+make
+```
+
+### 
 
 ## Preparing configs and inputs  
 
@@ -53,3 +61,5 @@ In the config file you'll need to edit ```workdir```, ```sample_table```, ```my_
 * SURVIVOR_path: full path to directory with the survivor executable
 * reference: full path to the reference assembly for your species
 * custom_lib: full path to a lineage-specific curated TE library for your species
+
+You'll also have to edit one path in rules/postprocessing.smk. (I know this is annoying).
