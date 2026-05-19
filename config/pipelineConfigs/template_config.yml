@@ -18,7 +18,6 @@ fastq_basepath: "data/{specimen}/{lane}/{smrtcell}.fastq.gz"
 
 # Specify paths to scripts, packages, and other tools not managed by conda
 # Working on helper functions for managing environmental $PATH as necessary.
-SURVIVOR_path: "/global/scratch/users/landen_gozashti/tools/SURVIVOR/Debug"
 
 ###############################
 ### Analysis config options ###
