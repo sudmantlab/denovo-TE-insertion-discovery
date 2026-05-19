@@ -42,7 +42,18 @@ cd SURVIVOR/Debug
 make
 ```
 
-### 
+### GraffiTE dev version
+
+First pull the singlularity image:
+```
+apptainer remote add --no-login SylabsCloud cloud.sycloud.io
+apptainer remote use SylabsCloud
+apptainer pull --arch amd64 graffite_latest.sif library://cgroza/collection/graffite:latest
+```
+
+Then, 
+``` git clone https://github.com/cgroza/GraffiTE.git ```
+```nextflow pull -r v1.1dev https://github.com/cgroza/GraffiTE ```
 
 ## Preparing configs and inputs  
 
@@ -63,3 +74,5 @@ In the config file you'll need to edit ```workdir```, ```sample_table```, ```my_
 * custom_lib: full path to a lineage-specific curated TE library for your species
 
 You'll also have to edit one path in rules/postprocessing.smk. (I know this is annoying).
+
+```graffitiImage = "/global/scratch/users/landen_gozashti/tools/GraffiTE/graffite_latest.sif"``` needs to be edited to your local graffite singlularity image.
