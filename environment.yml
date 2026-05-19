@@ -1,0 +1,35 @@
+name: dnsv_analysis
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.10.15
+
+  # Common dependencies (using oldest versions with >=, update as necessary)
+  - samtools==1.21
+  - deeptools==3.5.2
+  - bedtools==2.31.1
+  - bcftools==1.19
+  - pigz
+
+  # Assembly
+  - hifiasm==0.19.5
+  - purge_dups==1.2.6
+  - gfatools==0.5
+  - ragtag==2.1.0
+  - quast==5.2.0
+
+  # Alignment
+  - minimap2==2.28
+
+  # Repeat analysis
+  - trf==4.09.1
+  - repeatmasker==4.1.2.p1
+  - rmblast
+  - blast
+
+  # SV calling
+  - pip==25.0.1
+  - pip:
+    - git+https://github.com/stacy-l/sniffles.git
