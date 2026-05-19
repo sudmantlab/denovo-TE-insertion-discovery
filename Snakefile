@@ -6,14 +6,9 @@ import os
 import numpy as np
 import pandas as pd
 
-#configfile: "config/pipelineConfigs/human_config.yml"
-#configfile: "config/pipelineConfigs/mouse_config.yml"
-#configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/mouse_brain/config/pipelineConfigs/mouse_config.yml"
-#configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/chimp_blood/config/pipelineConfigs/chimp_config.yml"
 configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/macaque_sperm/config/pipelineConfigs/macaque_config.yml"
-workdir: config['workdir'] #Wrong syntax?
+workdir: config['workdir'] 
 
-#refalias: config['reference']['alias'] #Wrong syntax?
 refalias= config['reference']['alias'] #correct syntax?
 
 ### common variables to be accessed in other rules/helper functions ###
