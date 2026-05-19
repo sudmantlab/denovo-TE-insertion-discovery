@@ -80,3 +80,5 @@ In the config file you'll need to edit ```workdir```, ```sample_table```, ```my_
 You'll also have to edit one path in rules/postprocessing.smk. (I know this is annoying).
 
 ```graffitiImage = "/global/scratch/users/landen_gozashti/tools/GraffiTE/graffite_latest.sif"``` needs to be edited to your local graffite singlularity image.
+
+Finally, you need to edit the snakefile to specify the path to your config file.
