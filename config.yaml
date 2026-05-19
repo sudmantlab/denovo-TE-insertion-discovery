@@ -1,0 +1,43 @@
+executor: slurm
+jobs: 60
+printshellcmds: True
+default-resources: 
+  slurm_account: 'co_genomicdata'
+  slurm_partition: 'savio4_htc'
+  qos: 'genomicdata_htc4_normal'
+  mem_mb: f"{attempt * 80000}"
+  runtime: 16800
+  tmpdir: "/global/scratch/users/landen_gozashti/resources/tmp"
+set-resources:
+  hifiasm:
+    mem_mb: f"{attempt * 450000}"
+    runtime: 16800
+  hifiasm_900:
+    mem_mb: f"{attempt * 390000}"
+    runtime: 16800
+  minimap2:
+    mem_mb: f"{attempt * 200000}"
+  minimap2_to_scaffolded:
+    mem_mb: f"{attempt * 200000}"
+  minimap2_to_T2T_scaffolded:
+    mem_mb: f"{attempt * 120000}"
+  minimap2miniSV:
+    mem_mb: f"{attempt * 200000}"
+  duplomap:
+    mem_mb: f"{attempt * 48000}"
+  repeatmasker_scaffolded:
+    mem_mb: f"{attempt * 200000}"
+  svbyeye_alignment:
+    mem_mb: f"{attempt * 48000}"
+  trf_per_chr:
+    mem_mb: f"{attempt * 200000}"
+    runtime: 16800
+  longdust_per_chr:
+    mem_mb: f"{attempt * 100000}"
+    runtime: 16800
+  liftover:
+    mem_mb: f"{attempt * 300000}"
+  graffiti:
+    mem_mb: f"{attempt * 80000}"
+  graffiti_reference:
+    mem_mb: f"{attempt * 80000}"
