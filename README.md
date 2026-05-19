@@ -4,7 +4,7 @@ Pipeline to identify de novo TE insertions from PacBio long-read data
 # Getting started
 
 To download the pipeline: 
-``` git clone ```
+``` git clone https://github.com/lgozasht/denovo-TE-insertion-discovery.git```
 
 Then,
 ``` cd denovo-TE-insertion-discovery ```
