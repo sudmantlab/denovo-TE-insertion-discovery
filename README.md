@@ -52,8 +52,12 @@ apptainer pull --arch amd64 graffite_latest.sif library://cgroza/collection/graf
 ```
 
 Then, 
-``` git clone https://github.com/cgroza/GraffiTE.git ```
-```nextflow pull -r v1.1dev https://github.com/cgroza/GraffiTE ```
+```
+git clone https://github.com/cgroza/GraffiTE.git 
+nextflow pull -r v1.1dev https://github.com/cgroza/GraffiTE
+```
+
+This will put your config files in ```~/.nextflow/assets/cgroza/GraffiTE/```. You'll need to make some edits. I have an example of a config file that actually runs on our cluster. Make sure it is the same besides the directory paths. Those just need to be directories with a lot of space which are accessible to compute nodes on the cluster.
 
 ## Preparing configs and inputs  
 
