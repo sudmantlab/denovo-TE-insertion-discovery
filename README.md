@@ -10,6 +10,8 @@ Then,
 ``` cd denovo-TE-insertion-discovery ```
 
 This directory has the following structure:
+```
+.
 ├── env/
 │   ├── environment.yml
 │   ├── longdust.yaml
@@ -29,3 +31,4 @@ This directory has the following structure:
     ├── pipelineConfigs/
         ├── template_config.yml
         └── template_samples.tsv
+```
