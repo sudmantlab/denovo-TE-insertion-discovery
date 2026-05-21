@@ -1,0 +1,99 @@
+rule genomicCoverage:
+    input:
+        bam = 'output/alignment/scaffolded/minimap2/standard/mapped/{specimen}.sorted.merged.bam',
+    output:
+        genomicCoverageTab = "output/alignment/scaffolded/minimap2/standard/coverage_stats/{specimen}.coverage.tab",
+    conda:
+        "../envs/environment.yml"
+    threads: 5
+    shell:
+        """
+        samtools depth --threads 5 -a {input.bam} > {output.genomicCoverageTab}
+        """
+
+
+'''
+rule hg38_standard_coverage_all:
+    input: 
+        bams = expand(f'output/alignment/{refalias}/minimap2/standard/mapped/{{specimen}}.sorted.merged.bam', specimen=specimens),
+        indices = expand(f'output/alignment/{refalias}/minimap2/standard/mapped/{{specimen}}.sorted.merged.bam.bai', specimen=specimens)
+    output:
+        plot = "output/alignment/{refalias}/minimap2/standard/coverage_stats/all.coverage.html",
+        rawcounts = "output/alignment/{refalias}/minimap2/standard/coverage_stats/all.rawcounts.coverage.tab"
+    conda: 
+        "../envs/environment.yml"
+    threads: 5
+    params: 
+        format = "plotly",
+        sample_bp = 1000000,
+        title = "'Coverage with minimap2 on hg38'",
+        labels = specimens
+    shell: 
+        """
+        plotCoverage -p {threads} \
+        --bamfiles {input.bams} \
+        --plotFile {output.plot} \
+        --plotFileFormat {params.format} \
+        -n {params.sample_bp} \
+        --plotTitle {params.title} \
+        --outRawCounts {output.rawcounts} \
+        --ignoreDuplicates \
+        --minMappingQuality 10 \
+        --labels {params.labels}
+        """
+
+use rule hg38_standard_coverage_all as scaffolded_standard_coverage_specimen with:
+    input:
+        bams = 'output/alignment/scaffolded/minimap2/standard/mapped/{specimen}.sorted.merged.bam',
+        indices = 'output/alignment/scaffolded/minimap2/standard/mapped/{specimen}.sorted.merged.bam.bai'
+    output:
+        plot = "output/alignment/scaffolded/minimap2/standard/coverage_stats/{specimen}.coverage.html",
+        rawcounts = "output/alignment/scaffolded/minimap2/standard/coverage_stats/{specimen}.rawcounts.coverage.tab"
+    params:
+        format = "plotly",
+        sample_bp = 1000000,
+        title = "'Coverage with minimap2 on scaffolded assembly'",
+        labels = "{specimen}"
+
+rule hg38_standard_coverage_chr:
+    input:
+        bam = 'output/alignment/{refalias}/minimap2/standard/mapped/{specimen}.sorted.merged.bam',
+        index = 'output/alignment/{refalias}/minimap2/standard/mapped/{specimen}.sorted.merged.bam.bai'
+    output:
+        plot = 'output/alignment/{refalias}/minimap2/standard/coverage_stats/{specimen}/{chr}.coverage.html',
+        rawcounts = 'output/alignment/{refalias}/minimap2/standard/coverage_stats/{specimen}/{chr}.rawcounts.tsv'
+    conda:
+        "../envs/environment.yml"
+    threads: 2
+    params:
+        format = "plotly",
+        sample_bp = 1000000,
+        title = "'Coverage with minimap2 on {chr} - {specimen}'",
+        region_format = "{chr}"
+    shell:
+        """
+        plotCoverage -p {threads} \
+        --bamfiles {input.bam} \
+        --region {params.region_format} \
+        --plotFile {output.plot} \
+        --plotFileFormat {params.format} \
+        -n {params.sample_bp} \
+        --plotTitle {params.title} \
+        --outRawCounts {output.rawcounts} \
+        --ignoreDuplicates \
+        --minMappingQuality 10 
+        """
+
+use rule hg38_standard_coverage_chr as scaffolded_standard_coverage_chr with:
+    input:
+        bam = 'output/alignment/scaffolded/minimap2/standard/mapped/{specimen}.sorted.merged.bam',
+        index = 'output/alignment/scaffolded/minimap2/standard/mapped/{specimen}.sorted.merged.bam.bai'
+    output:
+        plot = 'output/alignment/scaffolded/minimap2/standard/coverage_stats/{specimen}/{chr}.{hap}.coverage.pdf',
+        rawcounts = 'output/alignment/scaffolded/minimap2/standard/coverage_stats/{specimen}/{chr}.{hap}.rawcounts.tsv'
+    params:
+        format = "plotly",
+        sample_bp = 1000000,
+        title = "'Coverage on {chr} - {specimen}, {hap}'",
+        region_format = "{chr}_RagTag_{hap}"
+'''
