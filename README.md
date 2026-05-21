@@ -82,3 +82,8 @@ You'll also have to edit one path in rules/postprocessing.smk. (I know this is a
 ```graffitiImage = "/global/scratch/users/landen_gozashti/tools/GraffiTE/graffite_latest.sif"``` needs to be edited to your local graffite singlularity image.
 
 Finally, you need to edit the snakefile to specify the path to your config file.
+
+## Example snake make command!
+
+```snakemake --use-conda --profile /global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/config/snakemake --latency-wait 3 --snakefile /global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/Snakefile --rerun-triggers mtime ```
+
