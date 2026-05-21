@@ -85,5 +85,5 @@ Finally, you need to edit the snakefile to specify the path to your config file.
 
 ## Example snake make command!
 
-```snakemake --use-conda --profile /global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/config/snakemake --latency-wait 3 --snakefile /global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/Snakefile --rerun-triggers mtime ```
+```snakemake --use-conda --profile PATHTO/config/snakemake --latency-wait 3 --snakefile PATHTO/Snakefile --rerun-triggers mtime ```
 
