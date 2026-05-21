@@ -83,7 +83,17 @@ You'll also have to edit one path in rules/postprocessing.smk. (I know this is a
 
 Finally, you need to edit the snakefile to specify the path to your config file.
 
+## Snakemake requirements
+
+```
+snakemake-minimal >=8.27
+snakemake-executor-plugin-slurm >=0.12.1
+snakemake-executor-plugin-slurm-jobstep >=0.2.1
+```
+
 ## Example snake make command!
 
-```snakemake --use-conda --profile PATHTO/config/snakemake --latency-wait 3 --snakefile PATHTO/Snakefile --rerun-triggers mtime ```
+
+```
+snakemake --use-conda --profile PATHTO/config/snakemake --latency-wait 3 --snakefile PATHTO/Snakefile --rerun-triggers mtime ```
 
