@@ -41,6 +41,8 @@ longcall_path: "/global/scratch/users/landen_gozashti/tools/longcallD-v0.0.10_x6
 
 miniSV_path: "/global/scratch/users/landen_gozashti/tools/minisv/"
 
+ultra_path: "/global/scratch/users/landen_gozashti/tools/ULTRA/"
+
 minimap2:
   readgroup: "@RG\\tID:{specimen}\\tSM:{specimen}\\tPL:PACBIO"
 
