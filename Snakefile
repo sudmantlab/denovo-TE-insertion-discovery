@@ -73,7 +73,8 @@ rule all:
         expand(f"output/assembly/hifiasm/{{specimen}}/scaffolded/{{hap}}/{{specimen}}.{{hap}}.scaffold.canonical.fasta",specimen= specimens, hap = ['hap1','hap2']),
         expand(f"output/assembly/hifiasm/{{specimen}}/scaffolded/{{hap}}/repeatmasker/split_fastas/{{chr}}.fa", specimen= specimens, hap = ['hap1','hap2'], chr = chrs),
         expand(f"output/assembly/hifiasm/{{specimen}}/scaffolded/{{hap}}/repeatmasker/per_chr/{{chr}}.longdust.bed", specimen= specimens, hap = ['hap1','hap2'], chr = chrs,allow_missing = True),
-        expand(f"output/assembly/hifiasm/{{specimen}}/scaffolded/{{hap}}/repeatmasker/per_chr/{{chr}}.trf.bed", specimen= specimens, hap = ['hap1','hap2'], chr = chrs,allow_missing = True),
+        #expand(f"output/assembly/hifiasm/{{specimen}}/scaffolded/{{hap}}/repeatmasker/per_chr/{{chr}}.trf.bed", specimen= specimens, hap = ['hap1','hap2'], chr = chrs,allow_missing = True),
+        expand(f"output/assembly/hifiasm/{{specimen}}/scaffolded/{{hap}}/repeatmasker/per_chr/{{chr}}.ultra.bed", specimen= specimens, hap = ['hap1','hap2'], chr = chrs,allow_mis>
         expand(f'output/alignment/scaffolded/minimap2/standard/variants/sniffles_mosaic/{{specimen}}.qc_all.vcf.gz', specimen = specimens),
         expand(f'output/alignment/scaffolded/minimap2/standard/variants/sniffles_mosaic/{{specimen}}.qc_all.covfiltered.vcf.gz', specimen = specimens),
         #expand(f'output/alignment/scaffolded/minimap2/standard/variants/longcall/{{specimen}}.vcf', specimen = specimens),
