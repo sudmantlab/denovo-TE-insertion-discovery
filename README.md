@@ -42,6 +42,14 @@ cd SURVIVOR/Debug
 make
 ```
 
+### ULTRA
+```
+git clone https://github.com/TravisWheelerLab/ULTRA
+cd ULTRA
+cmake .
+make
+```
+
 ### GraffiTE dev version
 
 First pull the singlularity image:
@@ -74,6 +82,7 @@ In the config file you'll need to edit ```workdir```, ```sample_table```, ```my_
 * sample_table: full path to the sample table
 * my_tmp_path: full path to a directory where there is a ton of space that is accessible to compute nodes
 * SURVIVOR_path: full path to directory with the survivor executable
+* ultra_path: full path to directory with ULTRA executable
 * reference: full path to the reference assembly for your species
 * custom_lib: full path to a lineage-specific curated TE library for your species
 
