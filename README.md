@@ -1,5 +1,5 @@
 # denovo-TE-insertion-discovery
-Pipeline to identify de novo TE insertions from PacBio long-read data
+Pipeline to identify de novo TE insertions from PacBio long-read data. Note this pipeline is still under development.
 
 # Getting started
 
