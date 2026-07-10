@@ -69,9 +69,9 @@ This will put your config files in ```~/.nextflow/assets/cgroza/GraffiTE/```. Yo
 
 ## Preparing configs and inputs  
 
-You'll need to change the tempdir in ```snakemake/config.yaml``` so that it points to a directory that is accessible by compute nodes and has a lot of space. You'll also need to generate dataset-specific template_config.yml and template_samples.tsv files before running the pipeline.
+You'll need to change the tempdir in ```snakemake/config.yaml``` so that it points to a directory that is accessible by compute nodes and has a lot of space. You'll also need to generate dataset-specific template_config.yml and template_samples.tsv files before running the pipeline. 
 
-For each dataset you plan on analyzing with the pipeline, you'll need to generate a new working directory (this directory can be anywhere). Then specify the full path to this directory in the your pipeline config file (e.g. template_config.yml). In this working directory, you also need to make a directory named ```data```. This directory will how the input data for the pipeline with following structure: ```data/{specimen}/{lane}/{smrtcell}.fastq.gz```. These wildcard (speciment, lane, smrtcell) need to be specified in the sample tsv file (e.g. template_samples.tsv). The columns in this file provide each of these wildcards:
+For each dataset you plan on analyzing with the pipeline, you'll need to generate a new working directory (this directory can be anywhere). Then specify the full path to this directory in the your pipeline config file (e.g. template_config.yml). In this working directory, you also need to make a directory named ```data```. This directory will how the input data for the pipeline with following structure: ```data/{specimen}/{lane}/{smrtcell}.fastq.gz```. These wildcard (speciment, lane, smrtcell) need to be specified in the sample tsv file (e.g. template_samples.tsv). Beware, sample names (or specimens) cannot contain dashes or underscores! The columns in this file provide each of these wildcards:
 
 | specimen | group | lane | smrtcell | 
 | :--- | :--- | :--- | :--- |
