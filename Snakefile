@@ -6,7 +6,7 @@ import os
 import numpy as np
 import pandas as pd
 
-configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/macaque_sperm/config/pipelineConfigs/macaque_config.yml"
+configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/config/pipelineConfigs/template_config.yml"
 workdir: config['workdir'] 
 
 refalias= config['reference']['alias'] #correct syntax?
@@ -51,12 +51,7 @@ include: "rules/sniffles.smk"
 include: "rules/postprocessing.smk"
 include: "rules/postprocessing_reference.smk"
 
-#ruleorder: minimap2_to_scaffolded > minimap2
-#ruleorder: minimap2_to_T2T_scaffolded > minimap2
-#ruleorder: sniffles_mosaic_scaffolded > sniffles_mosaic
-#ruleorder: sniffles_standard_scaffolded > sniffles_standard
-#ruleorder: sniffles_mosaic_scaffolded > sniffles_mosaic
-#ruleorder: sniffles_standard_scaffolded > sniffles_standard
+
 
 rule all:
     input:
