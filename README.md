@@ -1,5 +1,5 @@
 # denovo-TE-insertion-discovery
-Pipeline to identify de novo TE insertions from PacBio long-read data. Note this pipeline is still under development.
+Pipeline to identify de novo TE insertions from PacBio long-read data. The only major difference between this branch and the publication branch is that this version allows users to generate an assembly from multiple samples of the same individual. Independent de-novo variant calls are still produced for each sample. This enables users to compare variant calls or de novo TE insertion rates for the same individual at different time points without wastefully generating an assembly for the same individual more than once. 
 
 # Getting started
 
