@@ -1,0 +1,10 @@
+name: blast_vcf
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - blast
+  - biopython
+  - pandas
