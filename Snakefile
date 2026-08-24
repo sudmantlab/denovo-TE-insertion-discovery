@@ -6,15 +6,14 @@ import os
 import numpy as np
 import pandas as pd
 
-configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/macaque_sperm/config/pipelineConfigs/macaque_config.yml"
+configfile: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/macaque_sperm/config/pipelineConfigs/template_config.yml"
 workdir: config['workdir'] 
 
 refalias= config['reference']['alias'] 
 
 ### common variables to be accessed in other rules/helper functions ###
 sample_table = pd.read_table(config['sample_table'], index_col=False, dtype=str)
-#specimens = sample_table['specimen'].unique()
-#groups =sorted(sample_table["group"].unique())
+
 specimens = sample_table['specimen']
 groups =sample_table["group"]
 ref_fasta = config['reference']['fasta']
