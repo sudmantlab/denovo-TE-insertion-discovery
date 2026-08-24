@@ -480,6 +480,7 @@ rule filterForYoungSniffles:
         )
 
 
+
 rule filterForYoungMinisv:
     input:
         vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/out/3_TSD_search/pangenome_filtered.vcf',
@@ -652,12 +653,55 @@ rule filterForYoungMinisv:
         info_tag="RM_PCTDIV",
         )
 
+rule blast_filter_insertions_sniffles:
+    input:
+        vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/out/3_TSD_search/pangenome_filtered_young.vcf',
+        genome1 = "output/assembly/hifiasm/{specimen}/scaffolded/{specimen}.diploid.fasta",
+        genome2 = config['reference']['fasta'],
+    output:
+        insertion_fasta = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/blast_back/insertions.fasta",
+        blast_results_genome1 = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/blast_back/blast_genome1.tsv",
+        blast_results_genome2 = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/blast_back/blast_genome2.tsv",
+        filtered_vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/out/3_TSD_search/pangenome_filtered_young_final.vcf',
+        blast_stats = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/blast_back/blast_stats.txt"
+    params:
+        min_ins_length = 50,
+        min_pident = 99,
+        min_qcovs = 100
+    threads: 8
+    conda:
+        "../envs/blast_vcf.yml"
+    script:
+        "../scripts/blast_filter_vcf.py"
+
+
+rule blast_filter_insertions_minisv:
+    input:
+        vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/out/3_TSD_search/pangenome_filtered_young.vcf',
+        genome1 = "output/assembly/hifiasm/{specimen}/scaffolded/{specimen}.diploid.fasta",
+        genome2 = config['reference']['fasta'],
+    output:
+        insertion_fasta = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/blast_back/insertions.fasta",
+        blast_results_genome1 = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/blast_back/blast_genome1.tsv",
+        blast_results_genome2 = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/blast_back/blast_genome2.tsv",
+        filtered_vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/out/3_TSD_search/pangenome_filtered_young_final.vcf',
+        blast_stats = "output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/minisv/blast_back/blast_stats.txt"
+    params:
+        min_ins_length = 50,
+        min_pident = 99,
+        min_qcovs = 100
+    threads: 8
+    conda:
+        "../envs/blast_vcf.yaml"
+    script:
+        "../scripts/blast_filter_vcf.py"
+
 
 
 rule liftover:
     input:
         #vcf = 'output/alignment/scaffolded/minimap2/standard/variants/sniffles_mosaic/{specimen}.qc_all.covfiltered.vcf.gz',
-        vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/out/3_TSD_search/pangenome_filtered.vcf',
+        vcf = 'output/alignment/scaffolded/minimap2/standard/variants/graffiti/{specimen}/sniffles/out/3_TSD_search/pangenome_filtered_young_final.vcf',
         fa = "output/assembly/hifiasm/{specimen}/scaffolded/{specimen}.diploid.fasta"
     output:
         liftedBed = 'output/alignment/scaffolded/minimap2/standard/variants/sniffles_mosaic/liftover/{specimen}.qc_all.covfiltered.lifted.bed',
