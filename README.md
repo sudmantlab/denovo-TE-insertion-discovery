@@ -104,5 +104,26 @@ snakemake-executor-plugin-slurm-jobstep >=0.2.1
 
 
 ```
-snakemake --use-conda --profile PATHTO/config/snakemake --latency-wait 3 --snakefile PATHTO/Snakefile --rerun-triggers mtime ```
+snakemake --use-conda --profile PATHTO/config/snakemake --latency-wait 3 --snakefile PATHTO/Snakefile --rerun-triggers mtime
+ ```
+
+## Output
+
+### Merged vcf of final de novo TE insertion calls across specimens:
+
+```
+{workdir}/output/alignment/scaffolded/minimap2/standard/variants/sniffles_mosaic/liftover/all_merged.final.vcf
+```
+
+Note that manual inspection is still an important step in validating de novo TE insertions. Intersecting
+
+### Vcfs of final de novo TE insertion calls for each specimen before liftover:
+
+These VCFs contain additional details for each de novo TE insertion callset.
+
+```
+{workdir}/output/alignment/scaffolded/minimap2/standard/variants/graffiti/{group}_{specimen}/sniffles/out/3_TSD_search/pangenome_filtered_young_final.vcf
+```
+
+
 
