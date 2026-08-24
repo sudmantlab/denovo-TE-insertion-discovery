@@ -32,24 +32,7 @@ rule simpleRepeatIntersect:
         gzip -c -d {input.filteredVcf} |  bedtools intersect -wo -a - -b {input.repeats} > {output.SVsInsimpleRepeats}
         """
 
-rule filterLongCall:
-    input:
-        vcf = 'output/alignment/scaffolded/minimap2/standard/variants/longcall/{specimen}.vcf'
-    output:
-        vcf = 'output/alignment/scaffolded/minimap2/standard/variants/longcall/{specimen}_filtered.vcf'
-    conda:
-        "../envs/environment.yml"
-    run:
-        with open(input.vcf,'r') as f:
-            with open(output.vcf,'w') as outF:
-                for line in f:
-                    if '#' in line[0]:
-                        outF.write(line)
-                    else:
-                        info = line.strip().split('\t')[-3].split(';')
-                        if info[0] == 'SOMATIC' and info[1] == 'MEI':
-                            if int(info[4].split('=')[-1]) >= 200:
-                                outF.write(line.strip() + '\n')
+
 
 rule graffiti_sniffles:
     input:
