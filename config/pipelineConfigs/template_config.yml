@@ -5,19 +5,14 @@
 # Indicate present working directory and metadata (sample) table
 
 workdir: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/"
-sample_table: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/config/pipelineConfigs/mouse_samples.tsv" # replace this with your actual sample table
+sample_table: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/config/pipelineConfigs/template_samples.tsv" # replace this with your actual sample table
 my_tmp_path: "/global/scratch/users/landen_gozashti/resources/tmp"
 
 # data is expected in the /global/path/to/hifi_dn_alu/data/ folder relative to the working directory
 # to minimize issues with snakemake's wildcard parsing, use the structure below
-fastq_basepath: "data/{specimen}/{lane}/{smrtcell}.fastq.gz"
+fastq_basepath: "data/{group}/{specimen}/{lane}/{smrtcell}.fastq.gz"
 
-##########################
-### Path configuration ###
-##########################
 
-# Specify paths to scripts, packages, and other tools not managed by conda
-# Working on helper functions for managing environmental $PATH as necessary.
 
 ###############################
 ### Analysis config options ###
@@ -32,8 +27,6 @@ fastq_basepath: "data/{specimen}/{lane}/{smrtcell}.fastq.gz"
 reference:
   fasta: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/references/softmasked_clean.fa" # HGSVC hg38 no alts
   alias: "mouseT2T"
-  annotations:
-    repeats: "/global/scratch/users/landen_gozashti/projects/Sperm_diversity/stacy_pipeline/analysis/20251205_sperm_trial/references/simpleRepeats_clean_final.bed"
 
 SURVIVOR_path: "/global/scratch/users/landen_gozashti/tools/SURVIVOR/Debug/"
 
@@ -47,13 +40,13 @@ minimap2:
   readgroup: "@RG\\tID:{specimen}\\tSM:{specimen}\\tPL:PACBIO"
 
 samtools:
-  minQ: 10
+  minQ: 0
 
 sniffles:
   minsupport: 0
-  mapq: 20
+  mapq: 0
   mosaic-af-min: 0
-  mosaic-af-max: 0.2
+  mosaic-af-max: 0.1
   mosaic-qc-strand: False
 
 repeatmasker:
